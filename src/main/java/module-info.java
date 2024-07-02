@@ -17,4 +17,6 @@ module pl.patrykpora.internationalspacestation {
 
     opens pl.patrykpora.internationalspacestation to javafx.fxml;
     exports pl.patrykpora.internationalspacestation;
+    exports pl.patrykpora.internationalspacestation.controller;
+    opens pl.patrykpora.internationalspacestation.controller to javafx.fxml;
 }
