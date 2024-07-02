@@ -4,13 +4,19 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class InternationalSpaceStationApplication extends Application {
+
+    public static final Logger logger = LoggerFactory.getLogger(InternationalSpaceStationApplication.class);
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        logger.info("starting application......");
+        FXMLLoader fxmlLoader = new FXMLLoader(InternationalSpaceStationApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
