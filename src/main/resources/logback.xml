@@ -2,7 +2,7 @@
 
 
     <property name="LOG_FILE" value="app" />
-    <property name="LOG_DIR" value="src/logs" />
+    <property name="LOG_DIR" value="/logs" />
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${LOG_DIR}/${LOG_FILE}.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -17,7 +17,7 @@
 
 
     <property name="LOG_FILE_ERROR" value="error" />
-    <property name="LOG_DIR_ERROR" value="src/logs" />
+    <property name="LOG_DIR_ERROR" value="/logs" />
     <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR_ERROR}/${LOG_FILE_ERROR}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
