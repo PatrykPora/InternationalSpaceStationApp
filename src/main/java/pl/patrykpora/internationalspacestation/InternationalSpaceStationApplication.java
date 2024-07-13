@@ -16,6 +16,8 @@ public class InternationalSpaceStationApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         logger.info("starting application......");
+        logger.error("test error log");
+        logger.debug("test debug log");
         FXMLLoader fxmlLoader = new FXMLLoader(InternationalSpaceStationApplication.class.getResource("start-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("SPACE STATION APP!");
@@ -23,7 +25,4 @@ public class InternationalSpaceStationApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch();
-    }
 }

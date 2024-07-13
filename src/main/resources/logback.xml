@@ -1,23 +1,21 @@
 <configuration debug="true" scan="true">
 
-
-    <property name="LOG_FILE" value="app" />
-    <property name="LOG_DIR" value="/logs" />
+    <property name="LOG_FILE" value="app"/>
+    <property name="LOG_DIR" value="logs"/>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${LOG_DIR}/${LOG_FILE}.log</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
-        <maxHistory>30</maxHistory>
-        <totalSizeCap>200MB</totalSizeCap>
-    </rollingPolicy>
+        <file>${LOG_DIR}/${LOG_FILE}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/%d{yyyy/MM}/${LOG_FILE}.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>200MB</totalSizeCap>
+        </rollingPolicy>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
 
-
-    <property name="LOG_FILE_ERROR" value="error" />
-    <property name="LOG_DIR_ERROR" value="/logs" />
+    <property name="LOG_FILE_ERROR" value="error"/>
+    <property name="LOG_DIR_ERROR" value="logs"/>
     <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_DIR_ERROR}/${LOG_FILE_ERROR}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -28,8 +26,12 @@
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
     </appender>
-
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -37,12 +39,10 @@
         </encoder>
     </appender>
 
-    <logger name="SpaceStationApp" level="ERROR">
-        <appender-ref ref="FILE_ERROR" />
-    </logger>
-
     <root level="DEBUG">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="FILE_ERROR"/>
+        <appender-ref ref="STDOUT"/>
     </root>
+
 </configuration>
