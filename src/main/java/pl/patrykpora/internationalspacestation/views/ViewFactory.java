@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.patrykpora.internationalspacestation.model.Model;
 
 import java.io.IOException;
 
@@ -17,7 +16,11 @@ public class ViewFactory {
     private static final Logger logger = LoggerFactory.getLogger(ViewFactory.class);
     private AnchorPane dashboardView;
     private AnchorPane menuPanelView;
-    private BorderPane mainPanelView;
+    private AnchorPane issSpeedView;
+    private AnchorPane issRunLocationView;
+    private AnchorPane peopleInSpaceView;
+
+    private BorderPane main_panel;
     private final String NASA_ICON_PATH = "/images/nasa.png";
 
     public ViewFactory() {
@@ -49,16 +52,48 @@ public class ViewFactory {
         return menuPanelView;
     }
 
-    public BorderPane getMainPanelView() {
-        if (mainPanelView == null) {
+    public BorderPane getMain_panel() {
+        if (main_panel == null) {
             try {
-                mainPanelView = new FXMLLoader(getClass().getResource("/fxml/main_panel.fxml")).load();
+                main_panel = new FXMLLoader(getClass().getResource("/fxml/main_panel.fxml")).load();
             } catch (IOException e) {
                 logger.error("error during creating main panel view", e);
             }
         }
-        mainPanelView.setCenter(Model.getInstance().getViewFactory().getDashboardView());
-        return mainPanelView;
+        return main_panel;
+    }
+
+    public AnchorPane getIssSpeedView() {
+        if (issSpeedView == null) {
+            try {
+                issSpeedView = new FXMLLoader(getClass().getResource("/fxml/iss_speed.fxml")).load();
+            } catch (IOException e) {
+                logger.error("error during creating iss speed view", e);
+            }
+        }
+        return issSpeedView;
+    }
+
+    public AnchorPane getIssRunLocationView() {
+        if (issRunLocationView == null) {
+            try {
+                issRunLocationView = new FXMLLoader(getClass().getResource("/fxml/iss_run_for_location.fxml")).load();
+            } catch (IOException e) {
+                logger.error("error during creating iss run for location view", e);
+            }
+        }
+        return issRunLocationView;
+    }
+
+    public AnchorPane getPeopleInSpaceView() {
+        if (peopleInSpaceView == null) {
+            try {
+                peopleInSpaceView = new FXMLLoader(getClass().getResource("/fxml/people_in_space.fxml")).load();
+            } catch (IOException e) {
+                logger.error("error during creating people in space view", e);
+            }
+        }
+        return peopleInSpaceView;
     }
 
     public void showDashboardWindow() {
@@ -74,7 +109,8 @@ public class ViewFactory {
     private void createStage(FXMLLoader loader) {
         Scene scene = null;
         try {
-            scene = new Scene(loader.load());
+            main_panel = loader.load();
+            scene = new Scene(main_panel);
         } catch (Exception e) {
             logger.error("error while creating scene ", e);
         }
