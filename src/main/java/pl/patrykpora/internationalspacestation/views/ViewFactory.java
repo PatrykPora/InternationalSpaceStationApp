@@ -4,9 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.patrykpora.internationalspacestation.model.Model;
 
 import java.io.IOException;
 
@@ -14,6 +16,9 @@ public class ViewFactory {
 
     private static final Logger logger = LoggerFactory.getLogger(ViewFactory.class);
     private AnchorPane dashboardView;
+    private AnchorPane menuPanelView;
+    private BorderPane mainPanelView;
+    private final String NASA_ICON_PATH = "/images/nasa.png";
 
     public ViewFactory() {
     }
@@ -27,11 +32,42 @@ public class ViewFactory {
                 logger.error("error during creating dashboard view", e);
             }
         }
+
         return dashboardView;
+    }
+
+
+    public AnchorPane getMenuPanelView() {
+        if (menuPanelView == null) {
+            try {
+                menuPanelView = new FXMLLoader(getClass().getResource("/fxml/menu_panel.fxml")).load();
+            } catch (IOException e) {
+                logger.error("error during creating menu view", e);
+            }
+
+        }
+        return menuPanelView;
+    }
+
+    public BorderPane getMainPanelView() {
+        if (mainPanelView == null) {
+            try {
+                mainPanelView = new FXMLLoader(getClass().getResource("/fxml/main_panel.fxml")).load();
+            } catch (IOException e) {
+                logger.error("error during creating main panel view", e);
+            }
+        }
+        mainPanelView.setCenter(Model.getInstance().getViewFactory().getDashboardView());
+        return mainPanelView;
     }
 
     public void showDashboardWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboard.fxml"));
+        createStage(loader);
+    }
+
+    public void showMainWindow() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main_panel.fxml"));
         createStage(loader);
     }
 
@@ -46,7 +82,7 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.setTitle("Space Station Monitoring");
-        stage.getIcons().add(new Image(String.valueOf(getClass().getResource("/images/nasa.png"))));
+        stage.getIcons().add(new Image(String.valueOf(getClass().getResource(NASA_ICON_PATH))));
         stage.show();
     }
 
