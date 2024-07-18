@@ -84,6 +84,53 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>eu.hansolo.fx</groupId>
+            <artifactId>countries</artifactId>
+            <version>17.0.23</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>tilesfx</artifactId>
+            <version>17.1.17</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>toolboxfx</artifactId>
+            <version>21.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>eu.hansolo.fx</groupId>
+            <artifactId>heatmap</artifactId>
+            <version>21.0.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.github.almasb</groupId>
             <artifactId>fxgl</artifactId>
             <version>17.2</version>
@@ -111,16 +158,20 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.2.224</version>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.0.2.Final</version>
         </dependency>
+
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -130,6 +181,13 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.9</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
         </dependency>
     </dependencies>
 

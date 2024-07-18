@@ -1,2 +1,8 @@
-package pl.patrykpora.internationalspacestation.database;public interface Dao {
+package pl.patrykpora.internationalspacestation.repository;
+
+
+public interface Dao<T> {
+
+    void save(T t);
+
 }

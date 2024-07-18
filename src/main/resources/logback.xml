@@ -33,6 +33,24 @@
         </filter>
     </appender>
 
+    <property name="LOG_DIR_HIBERNATE" value="logs"/>
+    <appender name="HIBERNATE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR_HIBERNATE}/hibernate.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/hibernate/%d{yyyy/MM}/hibernate-%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>200MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate" level="DEBUG">
+        <appender-ref ref="HIBERNATE_FILE"/>
+    </logger>
+
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -43,6 +61,7 @@
         <appender-ref ref="FILE"/>
         <appender-ref ref="FILE_ERROR"/>
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="HIBERNATE_FILE"/>
     </root>
 
 </configuration>
