@@ -18,6 +18,10 @@ module pl.patrykpora.internationalspacestation {
     requires jakarta.persistence;
     requires java.naming;
     requires lombok;
+    requires okhttp3;
+    requires annotations;
+    requires org.json;
+
 
     opens pl.patrykpora.internationalspacestation to javafx.fxml;
     exports pl.patrykpora.internationalspacestation;

@@ -8,6 +8,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.patrykpora.internationalspacestation.services.HTTPClientProvider;
+import pl.patrykpora.internationalspacestation.services.PeopleInSpaceService;
 
 import java.io.IOException;
 
@@ -118,7 +120,12 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.setTitle("Space Station Monitoring");
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource(NASA_ICON_PATH))));
+        stage.setOnCloseRequest(windowEvent -> {
+            HTTPClientProvider.getInstance().closeHttpClient();
+            logger.info("closing app ............");
+        });
         stage.show();
+
     }
 
 

@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1D2951;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.patrykpora.internationalspacestation.controller.PeopleInSpaceController">
-   <Text layoutX="30.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIST OF PEOPLE IN SPACE AT THE MOMENT" textAlignment="CENTER" textOrigin="CENTER">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <ListView fx:id="people_in_space_listView" layoutX="14.0" layoutY="79.0" prefHeight="200.0" prefWidth="519.0" style="-fx-background-color: #ffcccc;" AnchorPane.bottomAnchor="121.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="79.0" />
-   <Label fx:id="number_of_people_in_space_label" layoutX="288.0" layoutY="297.0" text="number" textFill="#cd5050" />
-   <Text layoutX="159.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="currently in space" />
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #1D2951;"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="pl.patrykpora.internationalspacestation.controller.PeopleInSpaceController">
+    <Text layoutX="30.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="LIST OF PEOPLE IN SPACE AT THE MOMENT" textAlignment="CENTER" textOrigin="CENTER">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Text>
+    <ListView fx:id="people_in_space_listView" layoutX="14.0" layoutY="79.0" prefHeight="200.0" prefWidth="519.0"
+              style="-fx-background-color: #ffcccc;" AnchorPane.bottomAnchor="121.0" AnchorPane.leftAnchor="14.0"
+              AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="79.0"/>
+    <Label fx:id="number_of_people_in_space_label" layoutX="288.0" layoutY="297.0" text="number" textFill="#cd5050"/>
+    <Text layoutX="159.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="currently in space"/>
+    <Button fx:id="get_data_button" layoutX="30.0" layoutY="293.0" mnemonicParsing="false"
+            style="-fx-background-color: red; -fx-text-fill: white; -fx-background-insets: 0, 1, 2; -fx-background-radius: 0, 0, 0; -fx-border-color: transparent;"
+            text="GET DATA" textFill="#81f507">
+        <font>
+            <Font name="System Bold" size="14.0"/>
+        </font>
+    </Button>
 </AnchorPane>
