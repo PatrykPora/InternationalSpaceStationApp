@@ -16,9 +16,5 @@ public class PeopleInSpaceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        AstronautDao dao = new AstronautDao();
-        Astronaut astronaut = new Astronaut("patryk", "pora team");
-        dao.save(astronaut);
-
     }
 }

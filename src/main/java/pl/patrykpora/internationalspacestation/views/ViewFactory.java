@@ -116,7 +116,6 @@ public class ViewFactory {
         }
         Stage stage = new Stage();
         stage.setScene(scene);
-        stage.setFullScreen(true);
         stage.setTitle("Space Station Monitoring");
         stage.getIcons().add(new Image(String.valueOf(getClass().getResource(NASA_ICON_PATH))));
         stage.show();
