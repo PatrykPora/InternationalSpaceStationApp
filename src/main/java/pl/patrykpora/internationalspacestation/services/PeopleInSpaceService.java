@@ -1,7 +1,9 @@
 package pl.patrykpora.internationalspacestation.services;
 
-import okhttp3.*;
-import org.jetbrains.annotations.NotNull;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -34,18 +36,14 @@ public class PeopleInSpaceService {
     }
 
     public List<Astronaut> getAstronautList() {
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                logger.error("error trying to get people in space from api", e);
-            }
 
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String jsonData = response.body().string();
-                parseAstronautData(jsonData);
-            }
-        });
+        Call call = client.newCall(request);
+        try (Response response = call.execute()) {
+            String jsonData = response.body().string();
+            parseAstronautData(jsonData);
+        } catch (IOException e) {
+            logger.error("error during trying to get list od astronauts in space", e);
+        }
         return astronautList;
     }
 
@@ -72,7 +70,5 @@ public class PeopleInSpaceService {
         }
         return numberOfPeopleInSpace;
     }
-
-
 
 }
