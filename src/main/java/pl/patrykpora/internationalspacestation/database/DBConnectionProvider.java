@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import pl.patrykpora.internationalspacestation.model.Astronaut;
 import pl.patrykpora.internationalspacestation.model.IssPosition;
+import pl.patrykpora.internationalspacestation.model.IssSpeed;
 
 
 public class DBConnectionProvider {
@@ -16,7 +17,7 @@ public class DBConnectionProvider {
         this.sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Astronaut.class)
-                .addAnnotatedClass(IssPosition.class)
+                .addAnnotatedClass(IssSpeed.class)
                 // add annotated classes here
                 .buildSessionFactory();
     }

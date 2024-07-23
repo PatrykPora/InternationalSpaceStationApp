@@ -5,29 +5,29 @@ import jakarta.persistence.EntityTransaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.patrykpora.internationalspacestation.database.DBConnectionProvider;
-import pl.patrykpora.internationalspacestation.model.IssPosition;
+import pl.patrykpora.internationalspacestation.model.IssSpeed;
 
-public class IssPositionDao implements Dao<IssPosition> {
+public class IssSpeedDao implements Dao<IssSpeed> {
 
-    public static final Logger logger = LoggerFactory.getLogger(IssPositionDao.class);
+    public static final Logger logger = LoggerFactory.getLogger(IssSpeedDao.class);
     private final EntityManager entityManager;
 
-    public IssPositionDao() {
+    public IssSpeedDao() {
         this.entityManager = DBConnectionProvider.getInstance().getEntityManager();
     }
 
     @Override
-    public void save(IssPosition issPosition) {
+    public void save(IssSpeed issSpeed) {
         EntityTransaction transaction = null;
         try {
             transaction = entityManager.getTransaction();
             if (!transaction.isActive()) {
                 transaction.begin();
             }
-            entityManager.persist(issPosition);
+            entityManager.persist(issSpeed);
             transaction.commit();
         } catch (Exception e) {
-            logger.error("error trying to persist {} to db", issPosition, e);
+            logger.error("error trying to persist {} to db", issSpeed, e);
             if (transaction != null) {
                 transaction.rollback();
             }

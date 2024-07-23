@@ -5,10 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.patrykpora.internationalspacestation.repository.IssPositionDao;
+import pl.patrykpora.internationalspacestation.model.IssSpeed;
+import pl.patrykpora.internationalspacestation.repository.IssSpeedDao;
 import pl.patrykpora.internationalspacestation.services.IssSpeedService;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class IssSpeedController implements Initializable {
@@ -16,12 +18,12 @@ public class IssSpeedController implements Initializable {
     public Button get_data_button;
     public Label information_label;
     private final IssSpeedService issSpeedService;
-    private final IssPositionDao issPositionDao;
+    private final IssSpeedDao issSpeedDao;
     public static final Logger logger = LoggerFactory.getLogger(IssSpeedController.class);
 
     public IssSpeedController() {
+        this.issSpeedDao = new IssSpeedDao();
         this.issSpeedService = new IssSpeedService();
-        this.issPositionDao = new IssPositionDao();
     }
 
     @Override
@@ -44,6 +46,8 @@ public class IssSpeedController implements Initializable {
             double speed = issSpeedService.calculateIssSpeed();
             String formattedSpeed = String.format("%.2f", speed);
             current_speed_label.setText(formattedSpeed + "KM/H");
+            IssSpeed issSpeed = new IssSpeed(speed, LocalDate.now());
+            issSpeedDao.save(issSpeed);
         } catch (Exception e) {
             logger.error("error when trying to calculate speed of iss", e);
             information_label.setText("error occurred when truing to get data from api");
