@@ -16,7 +16,8 @@ public class InternationalSpaceStationApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         logger.info("starting application .....");
-       Model.getInstance().getViewFactory().showMainWindow();
+        DBConnectionProvider dbConnectionProvider = DBConnectionProvider.getInstance();
+        Model.getInstance().getViewFactory().showMainWindow();
     }
 
 }

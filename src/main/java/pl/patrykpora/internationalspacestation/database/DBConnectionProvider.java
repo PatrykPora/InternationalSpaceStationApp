@@ -16,9 +16,6 @@ public class DBConnectionProvider {
     private DBConnectionProvider() {
         this.sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Astronaut.class)
-                .addAnnotatedClass(IssSpeed.class)
-                // add annotated classes here
                 .buildSessionFactory();
     }
 

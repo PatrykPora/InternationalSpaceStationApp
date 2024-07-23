@@ -66,7 +66,7 @@ public class PeopleInSpaceService {
             numberOfPeopleInSpace = Long.parseLong(jsonObject.get("number").toString());
 
         } catch (IOException e) {
-            logger.error("exception trying to get number of astronauts in space");
+            logger.error("exception trying to get number of astronauts in space", e);
         }
         return numberOfPeopleInSpace;
     }

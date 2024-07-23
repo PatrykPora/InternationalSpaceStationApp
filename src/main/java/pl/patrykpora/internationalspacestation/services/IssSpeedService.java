@@ -48,10 +48,12 @@ public class IssSpeedService {
         return issPosition;
     }
 
+
     public double calculateIssSpeed() throws IssCurrentPositionException {
         logger.info("starting to calculate ");
         IssPosition one = getIssCurrentPosition();
-        //todo change this to executorservice to not block program
+
+
         try {
             Thread.sleep(Duration.ofSeconds(7));
         } catch (InterruptedException e) {
