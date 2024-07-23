@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class PeopleInSpaceController implements Initializable {
-    public ListView people_in_space_listView;
+    public ListView<Astronaut> people_in_space_listView;
     public Label number_of_people_in_space_label;
     public Button get_data_button;
 

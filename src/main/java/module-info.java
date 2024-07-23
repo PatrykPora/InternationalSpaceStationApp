@@ -26,6 +26,7 @@ module pl.patrykpora.internationalspacestation {
     opens pl.patrykpora.internationalspacestation to javafx.fxml;
     exports pl.patrykpora.internationalspacestation;
     exports pl.patrykpora.internationalspacestation.controller;
+    exports pl.patrykpora.internationalspacestation.model;
     opens pl.patrykpora.internationalspacestation.controller to javafx.fxml;
     opens pl.patrykpora.internationalspacestation.model to org.hibernate.orm.core;
 }

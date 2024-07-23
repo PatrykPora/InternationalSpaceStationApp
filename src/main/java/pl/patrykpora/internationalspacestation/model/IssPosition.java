@@ -16,5 +16,6 @@ public class IssPosition extends BaseEntity{
     private double longitude;
     private double latitude;
     private long timestamp;
+    private double speedOfIss;
 
 }
