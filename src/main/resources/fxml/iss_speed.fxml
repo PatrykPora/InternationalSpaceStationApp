@@ -15,4 +15,13 @@
           <Font name="DejaVu Serif Bold" size="18.0" />
         </font>
     </Label>
+   <Button fx:id="get_data_button" layoutX="260.0" layoutY="252.0" mnemonicParsing="false" text="get data" textFill="#cd1515">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font>
+   </Button>
+   <Label fx:id="information_label" layoutX="129.0" layoutY="304.0" prefHeight="17.0" prefWidth="340.0" text="notification label" textFill="#20ae33" visible="false">
+      <font>
+         <Font name="System Bold" size="13.0" />
+      </font></Label>
 </AnchorPane>

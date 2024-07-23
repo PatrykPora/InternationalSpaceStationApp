@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import pl.patrykpora.internationalspacestation.model.Astronaut;
+import pl.patrykpora.internationalspacestation.model.IssPosition;
 
 
 public class DBConnectionProvider {
@@ -15,6 +16,7 @@ public class DBConnectionProvider {
         this.sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Astronaut.class)
+                .addAnnotatedClass(IssPosition.class)
                 // add annotated classes here
                 .buildSessionFactory();
     }
